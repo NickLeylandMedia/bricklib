@@ -1,0 +1,27 @@
+@import "../../../styles/responsive.scss";
+
+.BasicFooter {
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+
+  @include lg {
+    flex-direction: row;
+  }
+}
+
+.linkBox {
+  width: 100%;
+
+  @include lg {
+    width: 50%;
+  }
+}
+
+.badgeBox {
+  width: 100%;
+
+  @include lg {
+    width: 50%;
+  }
+}

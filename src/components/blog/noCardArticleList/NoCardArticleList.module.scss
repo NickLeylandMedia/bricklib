@@ -1,0 +1,11 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/responsive.scss";
+
+.linkContainer {
+  width: 50%;
+  margin: 20px auto;
+
+  @include lg {
+    width: 30%;
+  }
+}

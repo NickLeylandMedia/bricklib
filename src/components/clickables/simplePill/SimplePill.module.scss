@@ -1,0 +1,203 @@
+@import "../../../styles/modules/clickables";
+@import "../../../styles/variables.scss";
+
+.basicSquare {
+  @include pill(red);
+}
+
+//Colors
+.blue {
+  @include pill(blue);
+}
+
+.green {
+  @include pill(green);
+}
+
+.red {
+  @include pill(red);
+}
+
+.yellow {
+  @include pill(yellow);
+}
+
+//Modern Vivid SAAS
+.mvs-blue {
+  @include pill($mvs-blue);
+}
+
+.mvs-orange {
+  @include pill($mvs-orange);
+}
+
+.mvs-red {
+  @include pill($mvs-red);
+}
+
+.mvs-black {
+  @include pill($mvs-black);
+}
+
+.mvs-teal {
+  @include pill($mvs-teal);
+}
+
+//Modern Nautical
+.mn-red {
+  @include pill($mn-red);
+}
+
+.mn-white {
+  @include pill($mn-white);
+}
+
+.mn-blue {
+  @include pill($mn-blue);
+}
+
+.mn-teal {
+  @include pill($mn-teal);
+}
+
+.mn-salmon {
+  @include pill($mn-salmon);
+}
+
+.mn-green {
+  @include pill($mn-green);
+}
+
+.mn-lightBlue {
+  @include pill($mn-lightBlue);
+}
+
+//Paypal-Esque Theme
+.pe-orange {
+  @include pill($pe-orange);
+}
+
+.pe-red {
+  @include pill($pe-red);
+}
+
+.pe-green {
+  @include pill($pe-green);
+}
+
+.pe-lightBlue {
+  @include pill($pe-lightBlue);
+}
+
+.pe-darkBlue {
+  @include pill($pe-darkBlue);
+}
+
+.pe-gray {
+  @include pill($pe-gray);
+}
+
+.pe-white {
+  @include pill($pe-white);
+}
+
+//Dark Autumn Theme
+.da-black {
+  @include pill($da-black);
+}
+
+.da-yellow {
+  @include pill($da-yellow);
+}
+
+.da-orange {
+  @include pill($da-orange);
+}
+
+.da-red {
+  @include pill($da-red);
+}
+
+.da-brown {
+  @include pill($da-brown);
+}
+
+//Futuristic Theme
+.f-black {
+  @include pill($f-black);
+}
+
+.f-darkGray {
+  @include pill($f-darkGray);
+}
+
+.f-blue {
+  @include pill($f-blue);
+}
+
+.f-red {
+  @include pill($f-red);
+}
+
+//Neon-Pastel Theme
+.np-yellow {
+  @include pill($np-yellow);
+}
+
+.np-pink {
+  @include pill($np-pink);
+}
+
+.np-blue {
+  @include pill($np-blue);
+}
+
+.np-orange {
+  @include pill($np-orange);
+}
+
+.np-black {
+  @include pill($np-black);
+}
+
+//Dark New Age SAAS
+.dna-dark {
+  @include pill($dna-dark);
+}
+
+.dna-purple {
+  @include pill($dna-purple);
+}
+
+.dna-blue {
+  @include pill($dna-blue);
+}
+
+.dna-lightPurple {
+  @include pill($dna-lightPurple);
+}
+
+.dna-white {
+  @include pill($dna-white);
+}
+
+//Hipster Contemporary Theme
+.hc-dark {
+  @include pill($hc-dark);
+}
+
+.hc-white {
+  @include pill($hc-white);
+}
+
+.hc-gray {
+  @include pill($hc-gray);
+}
+
+.hc-tan {
+  @include pill($hc-tan);
+}
+
+.hc-orange {
+  @include pill($hc-orange);
+}

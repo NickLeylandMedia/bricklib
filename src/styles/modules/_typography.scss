@@ -1,0 +1,135 @@
+@import "../variables.scss";
+@import "../responsive.scss";
+
+/* Header Styles */
+//Global Styles - Font Family
+.primary {
+  font-family: $font-primary;
+}
+
+.secondary {
+  font-family: $font-secondary;
+}
+
+.tertiary {
+  font-family: $font-tertiary;
+}
+
+//Global Styles - Font Color
+.dark {
+  color: black;
+}
+
+.light {
+  color: white;
+}
+
+//Global Styles - Font Weight
+.semiBold {
+  font-weight: 600;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+/* Alignment Styles */
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+/* End Alignment Styles */
+
+/* Header Styles */
+//General Header
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 12px 0;
+  padding: 0;
+}
+//Primary Header
+h1.primary,
+h2.primary,
+h3.primary,
+h4.primary,
+h5.primary,
+h6.primary {
+  font-weight: bold;
+}
+//Secondary Header
+h1.secondary,
+h2.secondary,
+h3.secondary,
+h4.secondary,
+h5.secondary,
+h6.secondary {
+  font-weight: 400;
+}
+
+//Font Sizes
+h1 {
+  font-size: $heading-1;
+}
+
+h2 {
+  font-size: $heading-2;
+}
+
+h3 {
+  font-size: $heading-3;
+}
+
+h4 {
+  font-size: $heading-4;
+}
+
+h5 {
+  font-size: $heading-5;
+}
+
+@include lg {
+  h1 {
+    font-size: $heading-1 * 1.5;
+  }
+
+  h2 {
+    font-size: $heading-2 * 1.5;
+  }
+
+  h3 {
+    font-size: $heading-3 * 1.5;
+  }
+
+  h4 {
+    font-size: $heading-4 * 1.5;
+  }
+
+  h5 {
+    font-size: $heading-5 * 1.5;
+  }
+}
+/* End Header Styles */
+/* Paragraph Styles */
+p {
+  margin: 6px 0;
+  padding: 0;
+  font-family: $font-tertiary;
+  font-size: $paragraph;
+
+  @include lg {
+    font-size: $paragraph * 1.25;
+  }
+}
+
+/* End Paragraph Styles */

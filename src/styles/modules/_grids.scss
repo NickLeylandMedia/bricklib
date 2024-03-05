@@ -1,0 +1,111 @@
+@import "../responsive.scss";
+@import "../variables.scss";
+
+.basicResponsiveGrid {
+  width: $component-full;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+
+  @include md {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include xl {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.oneColumnGrid {
+  width: $component-full;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr;
+}
+
+.maxTwoColumns {
+  width: $component-full;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: minmax(100px, auto);
+
+  @include lg {
+    grid-template-columns: minmax(100px, auto) minmax(100px, auto);
+  }
+}
+
+.maxThreeColumns {
+  width: $component-full;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: minmax(100px, auto);
+
+  @include lg {
+    grid-template-columns: minmax(100px, auto) minmax(100px, auto);
+  }
+
+  @include xl {
+    grid-template-columns: minmax(100px, auto) minmax(100px, auto) minmax(
+        100px,
+        auto
+      );
+  }
+}
+
+.maxFourColumns {
+  width: $component-full;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: minmax(100px, auto) minmax(100px, auto);
+
+  @include lg {
+    grid-template-columns: minmax(100px, auto) minmax(100px, auto) minmax(
+        100px,
+        auto
+      );
+  }
+
+  @include xl {
+    grid-template-columns:
+      minmax(100px, auto) minmax(100px, auto) minmax(100px, auto)
+      minmax(100px, auto);
+  }
+}
+
+.maxFiveColumns {
+  width: $component-full;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: minmax(100px, auto) minmax(100px, auto);
+
+  @include lg {
+    grid-template-columns:
+      minmax(100px, auto) minmax(100px, auto) minmax(100px, auto)
+      minmax(100px, auto);
+  }
+
+  @include xl {
+    grid-template-columns:
+      minmax(100px, auto) minmax(100px, auto) minmax(100px, auto)
+      minmax(100px, auto) minmax(100px, auto);
+  }
+}
+
+.maxSixColumns {
+  width: $component-full;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: minmax(100px, auto) minmax(100px, auto);
+
+  @include lg {
+    grid-template-columns:
+      minmax(100px, auto) minmax(100px, auto) minmax(100px, auto)
+      minmax(100px, auto) minmax(100px, auto);
+  }
+
+  @include xl {
+    grid-template-columns:
+      minmax(100px, auto) minmax(100px, auto) minmax(100px, auto)
+      minmax(100px, auto) minmax(100px, auto) minmax(100px, auto);
+  }
+}

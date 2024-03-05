@@ -1,0 +1,42 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/responsive.scss";
+@import "../../../styles/modules/clickables";
+
+.dropZone {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 25px;
+  box-sizing: border-box;
+  transition: all 500ms ease-in-out;
+}
+
+.activeDropZone {
+  box-sizing: border-box;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 25px;
+  transition: all 500ms ease-in-out;
+}
+
+.uploadIcon {
+  height: 70px;
+  width: 70px;
+}
+
+.blue {
+  transition: all 500ms ease-in-out;
+  .activeDropZone {
+    border: 5px solid blue;
+    background-color: rgba(blue, 0.2);
+  }
+
+  .dropZone {
+    border: 5px dashed blue;
+  }
+
+  button {
+    @include simpleSquare(blue);
+  }
+}

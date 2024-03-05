@@ -1,0 +1,22 @@
+.Badge {
+  display: column;
+  max-height: 175px;
+  transition: all 500ms ease-in-out;
+
+  &.rounded {
+    border-radius: 20px;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.image {
+  width: 70%;
+  height: auto;
+  max-height: 100px;
+  object-fit: contain;
+}

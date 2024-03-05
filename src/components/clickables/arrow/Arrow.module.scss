@@ -1,0 +1,27 @@
+@import "../../../styles/variables.scss";
+
+.Arrow {
+  height: 40px;
+  width: 40px;
+  transition: all 500ms ease-in-out;
+}
+
+.red {
+  color: red;
+
+  @media (hover: hover) {
+    &:hover {
+      color: darken(red, 20%);
+    }
+  }
+}
+
+.mvs-red {
+  color: $mvs-red;
+
+  @media (hover: hover) {
+    &:hover {
+      color: darken($mvs-red, 20%);
+    }
+  }
+}

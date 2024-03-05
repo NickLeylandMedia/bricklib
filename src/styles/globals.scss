@@ -1,0 +1,47 @@
+//Import variables
+@use "variables" as *;
+
+//Import Modules
+@use "./modules/borders";
+@use "./modules/clickables";
+@use "./modules/cards";
+@use "./modules/flex";
+@use "./modules/forms";
+@use "./modules/grids";
+@use "./modules/pages";
+@use "./modules/inputs";
+@use "./modules/overlays";
+@use "./modules/typography";
+@use "./modules/containers";
+
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  overflow-x: hidden;
+}
+
+button {
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: none;
+  font-family: $font-tertiary;
+}
+
+a {
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: $font-tertiary;
+}
+
+button {
+  cursor: pointer;
+}

@@ -1,0 +1,27 @@
+.BasicPortraitCard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  aspect-ratio: 1/1.3;
+
+  &.rounded {
+    border-radius: 20px;
+  }
+}
+
+.picture {
+  height: 90%;
+  object-fit: cover;
+  &.rounded {
+    border-radius: 20px 20px 0 0;
+  }
+}
+
+.contentBox {
+  height: 10%;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}

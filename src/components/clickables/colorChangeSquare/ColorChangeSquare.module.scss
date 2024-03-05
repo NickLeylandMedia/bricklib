@@ -1,0 +1,6 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/modules/clickables";
+
+.redToBlue {
+  @include colorChangeSquare(#ff0000, white, blue, white);
+}

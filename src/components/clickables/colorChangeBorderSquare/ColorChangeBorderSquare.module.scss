@@ -1,0 +1,24 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/modules/clickables";
+
+.orangeWhite {
+  @include colorChangeBorderSquare(
+    orange,
+    white,
+    rgba(white, 0.1),
+    orange,
+    white,
+    orange
+  );
+}
+
+.mvs-red {
+  @include colorChangeBorderSquare(
+    $mvs-red,
+    white,
+    rgba(white, 0.1),
+    $mvs-red,
+    white,
+    $mvs-red
+  );
+}

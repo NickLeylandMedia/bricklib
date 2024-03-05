@@ -1,0 +1,26 @@
+.uploadBox {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+
+  button {
+    width: 50%;
+    margin: 10px auto;
+  }
+
+  input {
+    margin: 20px auto;
+  }
+}
+
+.uploadIcon {
+  height: 70px;
+  width: 70px;
+  margin: 20px auto;
+  transition: all 500ms ease-in-out;
+
+  &.uploaded {
+    color: green;
+  }
+}

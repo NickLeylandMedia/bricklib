@@ -1,0 +1,51 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/responsive.scss";
+
+.DarkNav {
+  width: $component-nearFull;
+  margin: 0 auto;
+  position: sticky;
+  // display: flex;
+  // justify-content: space-between;
+  // flex-direction: row;
+  // align-items: center;
+}
+
+.fullSizeNav {
+  display: none;
+  width: 100%;
+
+  @include lg {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.mobileNav {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  @include lg {
+    display: none;
+  }
+}
+
+.mobileIcon {
+  height: 45px;
+  width: 45px;
+  color: white;
+  cursor: pointer;
+}
+
+.linkContainer {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}

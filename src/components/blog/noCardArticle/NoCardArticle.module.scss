@@ -1,0 +1,12 @@
+.NoCardArticle {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.noCardImage {
+  width: 100%;
+  max-height: 400px;
+  max-width: 600px;
+  object-fit: cover;
+  aspect-ratio: 2/3;
+}

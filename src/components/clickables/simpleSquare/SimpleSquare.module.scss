@@ -1,0 +1,203 @@
+@import "../../../styles/modules/clickables";
+@import "../../../styles/variables.scss";
+
+.basicSquare {
+  @include simpleSquare(red);
+}
+
+//Colors
+.blue {
+  @include simpleSquare(blue);
+}
+
+.green {
+  @include simpleSquare(green);
+}
+
+.red {
+  @include simpleSquare(red);
+}
+
+.yellow {
+  @include simpleSquare(yellow);
+}
+
+//Modern Vivid SAAS
+.mvs-blue {
+  @include simpleSquare($mvs-blue);
+}
+
+.mvs-orange {
+  @include simpleSquare($mvs-orange);
+}
+
+.mvs-red {
+  @include simpleSquare($mvs-red);
+}
+
+.mvs-black {
+  @include simpleSquare($mvs-black);
+}
+
+.mvs-teal {
+  @include simpleSquare($mvs-teal);
+}
+
+//Modern Nautical
+.mn-red {
+  @include simpleSquare($mn-red);
+}
+
+.mn-white {
+  @include simpleSquare($mn-white);
+}
+
+.mn-blue {
+  @include simpleSquare($mn-blue);
+}
+
+.mn-teal {
+  @include simpleSquare($mn-teal);
+}
+
+.mn-salmon {
+  @include simpleSquare($mn-salmon);
+}
+
+.mn-green {
+  @include simpleSquare($mn-green);
+}
+
+.mn-lightBlue {
+  @include simpleSquare($mn-lightBlue);
+}
+
+//Paypal-Esque Theme
+.pe-orange {
+  @include simpleSquare($pe-orange);
+}
+
+.pe-red {
+  @include simpleSquare($pe-red);
+}
+
+.pe-green {
+  @include simpleSquare($pe-green);
+}
+
+.pe-lightBlue {
+  @include simpleSquare($pe-lightBlue);
+}
+
+.pe-darkBlue {
+  @include simpleSquare($pe-darkBlue);
+}
+
+.pe-gray {
+  @include simpleSquare($pe-gray);
+}
+
+.pe-white {
+  @include simpleSquare($pe-white);
+}
+
+//Dark Autumn Theme
+.da-black {
+  @include simpleSquare($da-black);
+}
+
+.da-yellow {
+  @include simpleSquare($da-yellow);
+}
+
+.da-orange {
+  @include simpleSquare($da-orange);
+}
+
+.da-red {
+  @include simpleSquare($da-red);
+}
+
+.da-brown {
+  @include simpleSquare($da-brown);
+}
+
+//Futuristic Theme
+.f-black {
+  @include simpleSquare($f-black);
+}
+
+.f-darkGray {
+  @include simpleSquare($f-darkGray);
+}
+
+.f-blue {
+  @include simpleSquare($f-blue);
+}
+
+.f-red {
+  @include simpleSquare($f-red);
+}
+
+//Neon-Pastel Theme
+.np-yellow {
+  @include simpleSquare($np-yellow);
+}
+
+.np-pink {
+  @include simpleSquare($np-pink);
+}
+
+.np-blue {
+  @include simpleSquare($np-blue);
+}
+
+.np-orange {
+  @include simpleSquare($np-orange);
+}
+
+.np-black {
+  @include simpleSquare($np-black);
+}
+
+//Dark New Age SAAS
+.dna-dark {
+  @include simpleSquare($dna-dark);
+}
+
+.dna-purple {
+  @include simpleSquare($dna-purple);
+}
+
+.dna-blue {
+  @include simpleSquare($dna-blue);
+}
+
+.dna-lightPurple {
+  @include simpleSquare($dna-lightPurple);
+}
+
+.dna-white {
+  @include simpleSquare($dna-white);
+}
+
+//Hipster Contemporary Theme
+.hc-dark {
+  @include simpleSquare($hc-dark);
+}
+
+.hc-white {
+  @include simpleSquare($hc-white);
+}
+
+.hc-gray {
+  @include simpleSquare($hc-gray);
+}
+
+.hc-tan {
+  @include simpleSquare($hc-tan);
+}
+
+.hc-orange {
+  @include simpleSquare($hc-orange);
+}

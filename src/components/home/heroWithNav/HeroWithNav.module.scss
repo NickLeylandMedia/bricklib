@@ -1,0 +1,152 @@
+@import "../../../styles/responsive.scss";
+
+.HeroWithNav {
+  height: 100vh;
+  width: 100%;
+  background: fixed;
+  margin: 0;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 4;
+  //   background-image: url("https://nick-leyland.com/_next/static/media/boulder.c621920e.jpg");
+}
+
+.backgroundOverlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(black, 0.5);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.smallImageBg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: fixed;
+  margin: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  @include lg {
+    display: none;
+  }
+}
+
+.largeImageBg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background: fixed;
+  margin: 0;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+
+  @include lg {
+    display: block;
+  }
+}
+
+.sideBar {
+  display: none;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 22%;
+  border-right: 1px solid lightgray;
+  a {
+    margin: 40px 0;
+    z-index: 1;
+  }
+
+  @include lg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @include xl {
+    width: 15%;
+  }
+}
+
+.sideBarBackground {
+  width: 100%;
+  height: 100%;
+  background-image: url("/blacksand.jpg");
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.sideBarOverlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(gray, 0.1);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+}
+
+.headerBox {
+  width: 70%;
+  position: absolute;
+  text-align: center;
+  text-shadow: 2px 2px 3px black;
+  top: 40%;
+  left: 15%;
+  z-index: 0;
+
+  @include lg {
+    width: 50%;
+    left: 25%;
+  }
+}
+
+.downArrowBox {
+  height: 40px;
+  width: 35%;
+  background-color: white;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 20px;
+  left: 32.5%;
+
+  @include md {
+    width: 25%;
+    left: 37.5%;
+  }
+
+  @include lg {
+    width: 15%;
+    left: 42.5%;
+  }
+
+  // @include xl {
+  //   left: 50%;
+  // }
+}
+
+.arrowIcon {
+  height: 30px;
+  width: 30px;
+}

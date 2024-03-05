@@ -1,0 +1,33 @@
+@import "../variables.scss";
+@import "../responsive.scss";
+
+.standardContainer {
+  width: $component-nearFull;
+  margin: 20px auto;
+
+  @include lg {
+    width: $component-overHalf;
+  }
+
+  @include xl {
+    width: $component-half;
+  }
+}
+
+.narrowContainer {
+  width: $component-nearFull;
+  margin: 20px auto;
+
+  @include lg {
+    width: $component-half;
+  }
+
+  @include xl {
+    width: $component-third;
+  }
+}
+
+.wideContainer {
+  width: $component-nearFull;
+  margin: 20px auto;
+}

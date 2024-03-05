@@ -1,0 +1,10 @@
+.WhiteText {
+  font-size: 25px;
+  margin: 15px auto;
+
+  @media (hover: hover) {
+    &:hover {
+      color: red;
+    }
+  }
+}
