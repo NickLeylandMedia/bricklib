@@ -1,3 +1,9 @@
+@import "../../../styles/responsive.scss";
+
+.Gallery {
+  margin: 20px auto;
+}
+
 .galleryContainer {
   display: grid;
   gap: 0;
@@ -6,8 +12,9 @@
 
 .galleryItem {
   width: 100%;
-  height: 300px;
+  height: auto;
   object-fit: cover;
+  box-sizing: border-box;
 }
 
 .twoColumns {
@@ -15,7 +22,10 @@
 }
 
 .galleryLink {
-  display: flex;
-  justify-content: center;
+  width: 50%;
   margin: 20px auto;
+
+  @include lg {
+    width: 30%;
+  }
 }

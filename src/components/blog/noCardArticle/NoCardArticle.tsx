@@ -16,6 +16,7 @@ import Image from "next/image";
 /* Component Interfaces */
 interface Props {
   title: string;
+  link?: string;
   summary: string;
   textColor: "light" | "dark";
   img: string;
@@ -35,6 +36,7 @@ const NoCardArticle: React.FC<Props> = ({
   imgWidth,
   linkComponent,
   textColor,
+  link,
 }) => {
   /* State Variables */
   /* End State Variables */
@@ -64,7 +66,7 @@ const NoCardArticle: React.FC<Props> = ({
           {linkComponent ? (
             linkComponent
           ) : (
-            <Arrow direction="right" type="link" link="" color="mvs-red" />
+            <Arrow direction="right" type="link" link={link} color="mvs-red" />
           )}
         </div>
         <p className={`${textColor}`}>

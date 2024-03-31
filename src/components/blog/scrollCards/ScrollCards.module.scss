@@ -1,0 +1,6 @@
+.scrollContainer {
+  display: grid;
+  grid-template-columns: repeat(10, calc(20% - 40px));
+  grid-template-rows: minmax(150px, 1fr);
+  gap: 20px;
+}

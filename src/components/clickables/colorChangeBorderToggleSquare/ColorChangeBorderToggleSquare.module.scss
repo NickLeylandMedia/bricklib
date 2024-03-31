@@ -1,0 +1,60 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/modules/clickables";
+
+.ColorChangeBorderToggleSquare {
+  transition: 500ms ease-in-out;
+  padding: 10px 30px;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: block;
+
+  &.mvs-red {
+    border: 2px solid $mvs-red;
+    &.active {
+      color: white;
+      background-color: $mvs-red;
+      @media (hover: hover) {
+        &:hover {
+          background-color: darken($mvs-red, 30%);
+          border: 2px solid darken($mvs-red, 30%);
+        }
+      }
+    }
+
+    &.inactive {
+      @include colorChangeBorderSquare(
+        $mvs-red,
+        white,
+        rgba(white, 0.2),
+        $mvs-red,
+        white,
+        $mvs-red
+      );
+    }
+  }
+
+  &.mvs-orange {
+    border: 2px solid $mvs-orange;
+    &.active {
+      color: white;
+      background-color: $mvs-orange;
+      @media (hover: hover) {
+        &:hover {
+          background-color: darken($mvs-orange, 30%);
+          border: 2px solid darken($mvs-orange, 30%);
+        }
+      }
+    }
+
+    &.inactive {
+      @include colorChangeBorderSquare(
+        $mvs-orange,
+        white,
+        rgba(white, 0.2),
+        $mvs-orange,
+        white,
+        $mvs-orange
+      );
+    }
+  }
+}

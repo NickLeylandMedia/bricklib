@@ -9,3 +9,17 @@
     width: 30%;
   }
 }
+
+.pageNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.headerNavContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

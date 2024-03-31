@@ -11,15 +11,18 @@
 @use "./modules/pages";
 @use "./modules/inputs";
 @use "./modules/overlays";
+@use "./modules/sizing";
 @use "./modules/typography";
 @use "./modules/containers";
 
+html,
 body {
   width: 100%;
   margin: 0;
   padding: 0;
   background-color: black;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 button {

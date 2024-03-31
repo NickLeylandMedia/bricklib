@@ -1,6 +1,16 @@
-.titleImage {
+.imageWrapper {
   margin: 20px auto;
-  aspect-ratio: 2/3;
+  width: 100%;
+  height: auto;
+  overflow: none;
+}
+
+.titleDate {
+  font-size: 1.25em;
+}
+
+.titleImage {
   object-fit: cover;
   border: none;
+  max-height: 600px;
 }

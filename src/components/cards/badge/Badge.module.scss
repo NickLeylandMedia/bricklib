@@ -1,7 +1,10 @@
 .Badge {
-  display: column;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   max-height: 175px;
   transition: all 500ms ease-in-out;
+  align-items: center;
 
   &.rounded {
     border-radius: 20px;
@@ -17,6 +20,7 @@
 .image {
   width: 70%;
   height: auto;
-  max-height: 100px;
+  max-height: 90%;
   object-fit: contain;
+  align-items: center;
 }

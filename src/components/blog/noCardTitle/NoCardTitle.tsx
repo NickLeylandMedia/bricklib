@@ -59,17 +59,22 @@ const NoCardTitle: React.FC<Props> = ({
       <h3 className={`secondary ${textColor}`}>
         {subTitle ? subTitle : "This is a subtitle."}
       </h3>
-      <p className={`${textColor}`}>{`Published On: ${renderedDate}`}</p>
-      <Image
-        className={styles.titleImage}
-        src={image}
-        alt={alt}
-        height={imgHeight}
-        width={imgWidth}
-        style={{
-          boxShadow: `${imageGlowColor} 0px 0px 20px 2px`,
-        }}
-      />
+      <p
+        className={`${textColor} ${styles.titleDate}`}
+      >{`Published On: ${renderedDate}`}</p>
+      <div className={styles.imageWrapper}>
+        <Image
+          className={styles.titleImage}
+          src={image}
+          alt={alt}
+          height={imgHeight}
+          width={imgWidth}
+          layout="responsive"
+          style={{
+            boxShadow: `${imageGlowColor} 0px 0px 20px 2px`,
+          }}
+        />
+      </div>
     </div>
   );
 };

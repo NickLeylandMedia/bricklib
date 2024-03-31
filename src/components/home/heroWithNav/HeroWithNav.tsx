@@ -2,7 +2,7 @@
 
 /* Library Imports */
 //React
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 /* Stylesheet Imports */
 import styles from "./HeroWithNav.module.scss";
@@ -16,12 +16,17 @@ import WhiteText from "../../clickables/whiteText/WhiteText";
 /* Module Imports */
 
 /* Component Interfaces */
+interface LinkProps {
+  text: string;
+  url: string;
+}
+
 interface Props {
   header?: string;
   subHeader?: string;
   smallImage: string;
   largeImage: string;
-  links: any[];
+  links: LinkProps[];
 }
 
 /* Component */

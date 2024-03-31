@@ -1,0 +1,37 @@
+@import "../../../styles/responsive.scss";
+
+.MinimalFooter {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+
+  @include lg {
+    flex-direction: row;
+  }
+
+  .linkContainer {
+    width: 100%;
+    display: flex;
+    align-items: space-evenly;
+    flex-wrap: wrap;
+    margin: 20px 0;
+
+    @include lg {
+      width: 50%;
+    }
+
+    a {
+      width: 33%;
+    }
+  }
+
+  .badgeGridContainer {
+    width: 100%;
+
+    @include lg {
+      width: 50%;
+    }
+  }
+}

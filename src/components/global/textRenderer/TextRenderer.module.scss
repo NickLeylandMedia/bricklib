@@ -1,0 +1,67 @@
+@import "../../../styles/responsive.scss";
+
+.tocBox {
+  position: fixed;
+  top: 30%;
+  right: 2%;
+  width: 15%;
+  background-color: white;
+  display: none;
+  padding: 20px 0;
+  border-radius: 10px;
+  list-style-type: circle;
+  color: black;
+
+  @include lg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include xl {
+    width: 20%;
+    right: 3%;
+  }
+}
+
+.tocLink {
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+  margin: 3px auto;
+  width: 90%;
+
+  &:hover {
+    color: #007bff;
+  }
+}
+
+.tocBadge {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding: 15px;
+  cursor: pointer;
+  position: fixed;
+  bottom: 2%;
+  right: 10%;
+
+  @include lg {
+    display: flex;
+  }
+}
+
+.tocIcon {
+  height: 20px;
+  width: 20px;
+  color: black;
+  cursor: pointer;
+}
+
+.closeIcon {
+  position: absolute;
+  top: 8%;
+  right: 8%;
+}

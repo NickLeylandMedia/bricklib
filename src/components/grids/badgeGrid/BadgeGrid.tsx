@@ -14,12 +14,20 @@ import TextBadge from "../../cards/textBadge/TextBadge";
 /* Module Imports */
 
 /* Component Interfaces */
+interface Badge {
+  image: string;
+  alt: string;
+  text?: string;
+  link: string;
+}
+
 interface Props {
   badgeType: "withText" | "picOnly";
   header: string;
-  items: any[];
+  items: Badge[];
   maxColumns: 2 | 3 | 4 | 5;
   rounded: boolean;
+  textColor: "light" | "dark";
 }
 
 /* Component */
@@ -29,6 +37,7 @@ const BadgeGrid: React.FC<Props> = ({
   items,
   maxColumns,
   rounded,
+  textColor,
 }) => {
   /* State Variables */
   /* End State Variables */
@@ -53,7 +62,7 @@ const BadgeGrid: React.FC<Props> = ({
           image={item.image}
           rounded={rounded}
           alt={item.alt}
-          text={item.text}
+          text={item.text || ""}
           link={item.link}
         />
       );
@@ -84,7 +93,7 @@ const BadgeGrid: React.FC<Props> = ({
   /* Component Return Statement */
   return (
     <div className={styles.BadgeGrid}>
-      <h2 className="primary">{header ? header : "Header"}</h2>
+      <h5 className={`${textColor} primary`}>{header ? header : "Header"}</h5>
       <div className={`${styles.gridContainer} ${columnRef[maxColumns]}`}>
         {renderedBadges}
       </div>

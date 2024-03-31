@@ -43,12 +43,12 @@ const Home: React.FC<Props> = () => {
           smallImage="https://nick-leyland.com/_next/static/media/rain.7790f617.png"
           largeImage="https://nick-leyland.com/_next/static/media/boulder.c621920e.jpg"
           links={[
-            { url: "/", text: "Home", icon: "" },
-            { url: "/blog", text: "Blog", icon: "" },
-            { url: "/media", text: "Media", icon: "" },
-            { url: "/about", text: "About", icon: "" },
-            { url: "/shop", text: "Shop", icon: "" },
-            { url: "/links", text: "Links", icon: "" },
+            { url: "/", text: "Home" },
+            { url: "/blog", text: "Blog" },
+            { url: "/media", text: "Media" },
+            { url: "/about", text: "About" },
+            { url: "/shop", text: "Shop" },
+            { url: "/links", text: "Links" },
           ]}
         />
       </header>

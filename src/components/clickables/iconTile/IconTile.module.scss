@@ -1,0 +1,48 @@
+@import "../../../styles/variables.scss";
+
+.IconTile {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 500ms all ease-in-out;
+
+  &.rectangular {
+    padding: 10px 5px;
+  }
+
+  &.rounded {
+    border-radius: 10px;
+  }
+}
+
+.mvs-red {
+  background-color: $mvs-red;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: darken($mvs-red, 20%);
+    }
+  }
+}
+
+.darkGray {
+  background-color: dimgray;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: darken(dimgray, 20%);
+    }
+  }
+}
+
+.gray {
+  background-color: gray;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: darken(gray, 20%);
+    }
+  }
+}
