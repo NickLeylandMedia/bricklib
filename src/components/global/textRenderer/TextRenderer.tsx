@@ -10,10 +10,12 @@ import { FaList } from "react-icons/fa6";
 import { IoMdClose } from "react-icons/io";
 
 /* Component Imports */
+import Image from "next/image";
 import Link from "next/link";
 
 /* Module Imports */
 import { motion } from "framer-motion";
+import { urlFor } from "@/modules/sanity";
 
 /* Component Interfaces */
 interface Props {
@@ -69,6 +71,19 @@ const TextRenderer: React.FC<Props> = ({
     <div
       className={`${styles.TextRenderer} ${textColor ? textColor : "light"}`}
     >
+      <div className={styles.mobileToc}>
+        <h4 className="dark primary center">Table Of Contents</h4>
+        <ul className={`left ${styles.tocLink}`}>
+          {TOC.map((item, index) => (
+            <li key={index}>
+              <Link href={`#${item}`} key={index}>
+                {item}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+
       {showTOC ? (
         <motion.div
           className={styles.tocBox}
@@ -169,6 +184,67 @@ const TextRenderer: React.FC<Props> = ({
         //paragraph
         if (block.style === "normal") {
           return <p key={index}>{block.children[0].text}</p>;
+        }
+        //image
+        if (block._type === "image") {
+          return (
+            <Image
+              src={urlFor(block.asset).url()}
+              width={1280}
+              height={720}
+              alt={block._key}
+              className={styles.postImage}
+            />
+          );
+        }
+        //Image With Text
+        if (block._type === "imageWithText") {
+          if (block.orientation === "landscape") {
+            return (
+              <div className={styles.imageWithText}>
+                <Image
+                  src={urlFor(block.image).url()}
+                  width={1280}
+                  height={720}
+                  alt={block.alt}
+                  className={`${styles.image} ${styles.landscape}`}
+                />
+                <p className={`${styles.text} ${block.textColor}`}>
+                  {block.text}
+                </p>
+              </div>
+            );
+          }
+          if (block.orientation === "portrait") {
+            return (
+              <div className={styles.imageWithText}>
+                <Image
+                  src={urlFor(block.image).url()}
+                  width={1280}
+                  height={720}
+                  alt={block.alt}
+                  className={`${styles.image} ${styles.portrait}`}
+                />
+                <p className={`${styles.text} ${block.textColor}`}>
+                  {block.text}
+                </p>
+              </div>
+            );
+          }
+        }
+
+        //Specification Text
+        if (block._type === "specificationText") {
+          return (
+            <div className={`${styles.specificationText}`}>
+              <h3 className={`${block.color} ${block.headerClass}`}>
+                {block.specification}:
+              </h3>
+              <p className={`${styles.text}`} key={index}>
+                {block.text}
+              </p>
+            </div>
+          );
         }
       })}
     </div>

@@ -33,8 +33,10 @@ const CatsAndTags: React.FC<Props> = ({
   /* End State Variables */
 
   /* Render Variables */
-  let renderedCats: any = <p>No categories to display!</p>;
-  let renderedTags: any = <p>No tags to display!</p>;
+  let renderedCats: any = (
+    <p className={`${textColor}`}>No categories to display!</p>
+  );
+  let renderedTags: any = <p className={`${textColor}`}>No tags to display!</p>;
 
   const widthRef = {
     standard: "standardContainer",
@@ -50,8 +52,20 @@ const CatsAndTags: React.FC<Props> = ({
         type="link"
         textColor={"light"}
         buttonColor="mvs-blue"
-        link={`/blog/category/${cat.slug.current}`}
-        text={cat.title}
+        link={`/blog/categories/${cat.name}`}
+        text={cat.name}
+      />
+    ));
+  }
+
+  if (tags.length > 0) {
+    renderedTags = tags.map((tag) => (
+      <SimplePill
+        type="link"
+        textColor={"light"}
+        buttonColor="mvs-red"
+        link={`/blog/tags/${tag.name}`}
+        text={tag.name}
       />
     ));
   }
@@ -71,13 +85,13 @@ const CatsAndTags: React.FC<Props> = ({
         width ? widthRef[width] : "standardContainer"
       }`}
     >
-      <div className={styles.catContainer}>
+      <div className={styles.pillContainer}>
         <h3 className={`${textColor} ${headerClass}`}>Categories</h3>
         <div className={styles.catTagFlex}>{renderedCats}</div>
       </div>
-      <div className={styles.tagContainer}>
+      <div className={styles.pillContainer}>
         <h3 className={`${textColor} ${headerClass}`}>Tags</h3>
-        <div className={styles.catTagFlex}></div>
+        <div className={styles.catTagFlex}>{renderedTags}</div>
       </div>
     </div>
   );

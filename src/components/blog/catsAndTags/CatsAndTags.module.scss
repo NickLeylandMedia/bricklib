@@ -1,0 +1,25 @@
+@import "../../../styles/responsive.scss";
+
+.CatsAndTags {
+  display: flex;
+  flex-direction: column;
+
+  @include lg {
+    flex-direction: row;
+  }
+}
+
+.pillContainer {
+  width: 100%;
+
+  @include lg {
+    width: 50%;
+  }
+}
+
+.catTagFlex {
+  gap: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}

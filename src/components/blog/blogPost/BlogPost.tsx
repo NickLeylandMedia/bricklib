@@ -26,6 +26,8 @@ interface Props {
   textColor: "light" | "dark";
   imageGlowColor: string;
   body: any;
+  cats: any[];
+  tags: any[];
 }
 
 /* Component */
@@ -40,6 +42,8 @@ const BlogPost: React.FC<Props> = ({
   textColor,
   imageGlowColor,
   body,
+  cats,
+  tags,
 }) => {
   /* State Variables */
   /* End State Variables */
@@ -68,8 +72,8 @@ const BlogPost: React.FC<Props> = ({
         imageGlowColor={imageGlowColor}
       />
       <CatsAndTags
-        cats={[]}
-        tags={[]}
+        cats={cats}
+        tags={tags}
         textColor={textColor}
         headerClass={"primary"}
       />

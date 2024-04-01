@@ -21,6 +21,7 @@ interface Props {
 
 /* Component */
 const PostDetail: React.FC<Props> = ({ post }) => {
+  console.log(post);
   /* State Variables */
   /* End State Variables */
 
@@ -88,6 +89,8 @@ const PostDetail: React.FC<Props> = ({ post }) => {
           textColor="light"
           imageGlowColor="red"
           body={post.body}
+          cats={post.categories}
+          tags={post.tags}
         />
       </div>
       {/* Content End */}
