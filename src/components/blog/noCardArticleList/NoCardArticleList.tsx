@@ -29,6 +29,8 @@ interface Props {
   pageForwardComponent?: React.ReactNode;
   pageBackComponent?: React.ReactNode;
   width?: "standard" | "nearFull";
+  link?: string;
+  showHeader?: boolean;
 }
 
 /* Component */
@@ -43,6 +45,8 @@ const NoCardArticleList: React.FC<Props> = ({
   pageBackComponent,
   maxColumns,
   width,
+  link,
+  showHeader,
 }) => {
   /* State Variables */
   const [currentPage, setCurrentPage] = useState(1);
@@ -75,9 +79,12 @@ const NoCardArticleList: React.FC<Props> = ({
           textColor={textColor}
           key={index}
           img={item.img || item.image || item.mainImage}
+          date={item.date || item.publishedAt || item.createdAt}
           link={item.link || item.slug}
           alt={item.alt || item.imageAlt || item.mainImageAlt}
           title={item.title}
+          cats={item.cats || item.categories}
+          tags={item.tags || item.keywords}
           summary={
             item.summary || item.description || item.excerpt || item.snippet
           }
@@ -97,67 +104,102 @@ const NoCardArticleList: React.FC<Props> = ({
   /* End Effects */
 
   /* Component Return Statement */
-  return (
-    <div
-      className={`${styles.NoCardArticleList} ${
-        width ? widthRef[width] : null
-      }`}
-    >
-      {paginated ? (
-        <div className={styles.headerNavContainer}>
+  if (showHeader) {
+    return (
+      <div
+        className={`${styles.NoCardArticleList} ${
+          width ? widthRef[width] : null
+        }`}
+      >
+        {paginated ? (
+          <div className={styles.headerNavContainer}>
+            <h2 className={`primary ${textColor}`}>
+              {header ? header : "Header"}
+            </h2>
+            <div className={styles.pageNav}>
+              {pageBackComponent ? (
+                pageBackComponent
+              ) : (
+                <IconTile
+                  icon={<FaChevronLeft className="twentyFive light" />}
+                  backgroundColor="gray"
+                  action={() => setCurrentPage(currentPage - 1)}
+                  rounded
+                  rectangular
+                />
+              )}
+              {pageForwardComponent ? (
+                pageForwardComponent
+              ) : (
+                <IconTile
+                  icon={<FaChevronRight className="twentyFive light" />}
+                  backgroundColor="mvs-red"
+                  action={() => setCurrentPage(currentPage + 1)}
+                  rounded
+                  rectangular
+                />
+              )}
+            </div>
+          </div>
+        ) : (
           <h2 className={`primary ${textColor}`}>
             {header ? header : "Header"}
           </h2>
-          <div className={styles.pageNav}>
-            {pageBackComponent ? (
-              pageBackComponent
-            ) : (
-              <IconTile
-                icon={<FaChevronLeft className="twentyFive light" />}
-                backgroundColor="gray"
-                action={() => setCurrentPage(currentPage - 1)}
-                rounded
-                rectangular
-              />
-            )}
-            {pageForwardComponent ? (
-              pageForwardComponent
-            ) : (
-              <IconTile
-                icon={<FaChevronRight className="twentyFive light" />}
-                backgroundColor="mvs-red"
-                action={() => setCurrentPage(currentPage + 1)}
-                rounded
-                rectangular
-              />
-            )}
-          </div>
+        )}
+        <div
+          className={`${styles.articleContainer} ${
+            maxColumns ? columnRef[maxColumns] : columnRef[3]
+          }`}
+        >
+          {renderedArticles}
         </div>
-      ) : (
-        <h2 className={`primary ${textColor}`}>{header ? header : "Header"}</h2>
-      )}
+        <div className={styles.linkContainer}>
+          {showLink ? (
+            linkComponent ? (
+              linkComponent
+            ) : (
+              <ColorChangeBorderSquare
+                buttonColor="mvs-red"
+                type="link"
+                text="All Posts"
+                link={link ? link : "/blog"}
+              />
+            )
+          ) : null}
+        </div>
+      </div>
+    );
+  } else {
+    return (
       <div
-        className={`${styles.articleContainer} ${
-          maxColumns ? columnRef[maxColumns] : columnRef[3]
+        className={`${styles.NoCardArticleList} ${
+          width ? widthRef[width] : null
         }`}
       >
-        {renderedArticles}
+        <div
+          className={`${styles.articleContainer} ${
+            maxColumns ? columnRef[maxColumns] : columnRef[3]
+          }`}
+        >
+          {renderedArticles}
+        </div>
+        <div className={styles.linkContainer}>
+          {showLink ? (
+            linkComponent ? (
+              linkComponent
+            ) : (
+              <ColorChangeBorderSquare
+                buttonColor="mvs-red"
+                type="link"
+                text="All Posts"
+                link={link ? link : "/blog"}
+              />
+            )
+          ) : null}
+        </div>
       </div>
-      <div className={styles.linkContainer}>
-        {showLink ? (
-          linkComponent ? (
-            linkComponent
-          ) : (
-            <ColorChangeBorderSquare
-              buttonColor="mvs-red"
-              type="link"
-              text="All Posts"
-            />
-          )
-        ) : null}
-      </div>
-    </div>
-  );
+    );
+  }
 };
 
 /* Export Statement */

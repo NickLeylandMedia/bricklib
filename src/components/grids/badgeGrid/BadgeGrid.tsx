@@ -44,10 +44,10 @@ const BadgeGrid: React.FC<Props> = ({
 
   /* Render Variables */
   const columnRef = {
-    2: "maxTwoColumns",
-    3: "maxThreeColumns",
-    4: "maxFourColumns",
-    5: "maxFiveColumns",
+    2: "twoColumnGrid",
+    3: "threeColumnGrid",
+    4: "fourColumnGrid",
+    5: "fiveColumnGrid",
   };
 
   let renderedBadges: any = <p>No badges to display.</p>;

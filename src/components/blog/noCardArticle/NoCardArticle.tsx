@@ -1,6 +1,6 @@
 /* Library Imports */
 //React
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 /* Stylesheet Imports */
 import styles from "./NoCardArticle.module.scss";
@@ -10,6 +10,7 @@ import styles from "./NoCardArticle.module.scss";
 /* Component Imports */
 import Arrow from "../../clickables/arrow/Arrow";
 import Image from "next/image";
+import SimplePill from "@/components/clickables/simplePill/SimplePill";
 
 /* Module Imports */
 
@@ -24,6 +25,9 @@ interface Props {
   imgHeight: number;
   imgWidth: number;
   linkComponent?: React.ReactNode;
+  date?: string;
+  cats?: string[];
+  tags?: string[];
 }
 
 /* Component */
@@ -37,17 +41,31 @@ const NoCardArticle: React.FC<Props> = ({
   linkComponent,
   textColor,
   link,
+  date,
+  cats,
+  tags,
 }) => {
   /* State Variables */
+  const [catTags, setCatTags] = useState<string[]>([]);
   /* End State Variables */
 
   /* Render Variables */
+  const renderedDate = date ? new Date(date).toLocaleDateString() : "Unknown";
   /* End Render Variables */
 
   /* Functions */
   /* End Functions */
 
   /* Effects */
+  useEffect(() => {
+    if (cats) {
+      setCatTags((prev) => [...prev, ...cats]);
+    }
+    if (tags) {
+      setCatTags((prev) => [...prev, ...tags]);
+    }
+    console.log({ catTags: catTags });
+  }, [cats, tags]);
   /* End Effects */
 
   /* Component Return Statement */
@@ -69,6 +87,8 @@ const NoCardArticle: React.FC<Props> = ({
             <Arrow direction="right" type="link" link={link} color="mvs-red" />
           )}
         </div>
+        <div className={styles.catTagBox}></div>
+        <p className={`${textColor}`}>Published On: {renderedDate}</p>
         <p className={`${textColor}`}>
           {summary
             ? summary

@@ -14,6 +14,7 @@ import ShortIntro from "@/components/about/shortIntro/ShortIntro";
 import SimpleSquare from "@/components/clickables/simpleSquare/SimpleSquare";
 
 /* Module Imports */
+import { client } from "@/modules/shopify/client";
 
 /* Component Interfaces */
 interface Props {}
@@ -25,8 +26,44 @@ const Home: React.FC<Props> = () => {
 
   /* Render Variables */
   /* End Render Variables */
+  const query = `query {
+    collections(first: 10) {
+      edges {
+        node {
+          id
+          products(first: 20) {
+            edges {
+              node {
+                id
+              }
+            }
+          }
+        }
+      }
+    }
+  }`;
 
   /* Functions */
+  async function getShit() {
+    const response = await fetch(client.getStorefrontApiUrl(), {
+      body: JSON.stringify({
+        query: query,
+      }),
+      // Generate the headers using the private token. Additionally, you can pass in the buyer's IP address from the request object to help prevent bad actors from overloading your store.
+      headers: client.getPrivateTokenHeaders({ buyerIp: "..." }),
+      method: "POST",
+    });
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
+    const json = await response.json();
+
+    console.log(json);
+    return json;
+  }
+
   /* End Functions */
 
   /* Effects */
