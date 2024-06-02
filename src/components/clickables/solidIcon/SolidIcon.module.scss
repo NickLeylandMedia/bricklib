@@ -1,0 +1,22 @@
+@import "../../../styles/variables.scss";
+
+.SolidIcon {
+  cursor: pointer;
+  transition: all 500ms ease-in-out;
+}
+
+.red {
+  @media (hover: hover) {
+    &:hover {
+      color: red;
+    }
+  }
+}
+
+.mvs-red {
+  @media (hover: hover) {
+    &:hover {
+      color: red;
+    }
+  }
+}

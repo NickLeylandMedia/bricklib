@@ -1,0 +1,16 @@
+.MobileMenu {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  a {
+    margin: 25px auto;
+  }
+}
+
+.icon {
+  height: 40px;
+  width: 40px;
+  color: white;
+}

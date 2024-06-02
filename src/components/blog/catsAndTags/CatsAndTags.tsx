@@ -46,9 +46,10 @@ const CatsAndTags: React.FC<Props> = ({
   /* End Render Variables */
 
   /* Render Logic */
-  if (cats.length > 0) {
+  if (cats && cats.length > 0) {
     renderedCats = cats.map((cat) => (
       <SimplePill
+        key={Math.random()}
         type="link"
         textColor={"light"}
         buttonColor="mvs-blue"
@@ -58,9 +59,10 @@ const CatsAndTags: React.FC<Props> = ({
     ));
   }
 
-  if (tags.length > 0) {
+  if (tags && tags.length > 0) {
     renderedTags = tags.map((tag) => (
       <SimplePill
+        key={Math.random()}
         type="link"
         textColor={"light"}
         buttonColor="mvs-red"

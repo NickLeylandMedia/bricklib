@@ -1,0 +1,49 @@
+@import "../../../styles/responsive.scss";
+
+.PhotoServices {
+  a {
+    width: 60%;
+    margin: 30px auto;
+  }
+}
+
+.serviceBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 25px auto;
+
+  @include md {
+    flex-direction: row;
+  }
+}
+
+.serviceBox:nth-of-type(even) {
+  flex-direction: column-reverse;
+
+  @include md {
+    flex-direction: row;
+  }
+}
+
+.descBox {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 auto;
+
+  @include md {
+    width: 45%;
+  }
+}
+
+.serviceImage {
+  display: block;
+  margin: 0 auto;
+  object-fit: cover;
+}
+
+.serviceDescription {
+  margin: 0 auto;
+}

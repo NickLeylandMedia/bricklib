@@ -24,6 +24,7 @@ interface Props {
   textColor: "light" | "dark";
   headerClass?: "primary" | "secondary";
   glowColor?: string;
+  TOCenabled: boolean;
 }
 
 /* Component */
@@ -32,6 +33,7 @@ const TextRenderer: React.FC<Props> = ({
   headerClass,
   textColor,
   glowColor,
+  TOCenabled,
 }) => {
   /* State Variables */
   const [TOC, setTOC] = useState<string[]>([]);
@@ -39,9 +41,52 @@ const TextRenderer: React.FC<Props> = ({
   /* End State Variables */
 
   /* Render Variables */
+  let renderedTOC: any = null;
+
+  let renderedBadge: any = null;
   /* End Render Variables */
 
   /* Render Logic */
+  if (TOCenabled && !showTOC) {
+    renderedBadge = (
+      <div
+        key={Math.random()}
+        className={styles.tocBadge}
+        onClick={() => setShowTOC(true)}
+      >
+        <FaList className={styles.tocIcon} />
+      </div>
+    );
+  }
+
+  if (TOCenabled && showTOC && TOC.length > 0) {
+    renderedTOC = (
+      <motion.div
+        className={styles.tocBox}
+        style={{
+          boxShadow: `${glowColor ? glowColor : "red"} 0px 0px 20px 2px`,
+        }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+      >
+        <IoMdClose
+          className={`${styles.tocIcon} ${styles.closeIcon}`}
+          onClick={() => setShowTOC(false)}
+        />
+        <h4 className="primary dark center">Table of Contents</h4>
+        <ul className={`left ${styles.tocLink}`}>
+          {TOC.map((item, index) => (
+            <li key={index}>
+              <Link href={`#${item}`} key={index}>
+                {item}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </motion.div>
+    );
+  }
+
   /* End Render Logic */
 
   /* Functions */
@@ -49,6 +94,7 @@ const TextRenderer: React.FC<Props> = ({
 
   /* Effects */
   useEffect(() => {
+    if (!body) return;
     const newArr = body
       .filter((block) => {
         const string = String(block.style);
@@ -60,10 +106,6 @@ const TextRenderer: React.FC<Props> = ({
     setTOC(newArr);
   }, [body]);
 
-  useEffect(() => {
-    console.log({ toc: TOC });
-  }, [TOC]);
-
   /* End Effects */
 
   /* Component Return Statement */
@@ -71,33 +113,9 @@ const TextRenderer: React.FC<Props> = ({
     <div
       className={`${styles.TextRenderer} ${textColor ? textColor : "light"}`}
     >
-      <div className={styles.mobileToc}>
-        <h4 className="dark primary center">Table Of Contents</h4>
-        <ul className={`left ${styles.tocLink}`}>
-          {TOC.map((item, index) => (
-            <li key={index}>
-              <Link href={`#${item}`} key={index}>
-                {item}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {showTOC ? (
-        <motion.div
-          className={styles.tocBox}
-          style={{
-            boxShadow: `${glowColor ? glowColor : "red"} 0px 0px 20px 2px`,
-          }}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-        >
-          <IoMdClose
-            className={`${styles.tocIcon} ${styles.closeIcon}`}
-            onClick={() => setShowTOC(false)}
-          />
-          <h4 className="primary dark center">Table of Contents</h4>
+      {TOCenabled && TOC.length > 0 ? (
+        <div className={styles.mobileToc}>
+          <h4 className="dark primary center">Table Of Contents</h4>
           <ul className={`left ${styles.tocLink}`}>
             {TOC.map((item, index) => (
               <li key={index}>
@@ -107,146 +125,149 @@ const TextRenderer: React.FC<Props> = ({
               </li>
             ))}
           </ul>
-        </motion.div>
-      ) : null}
-      {showTOC ? null : (
-        <div className={styles.tocBadge} onClick={() => setShowTOC(true)}>
-          <FaList className={styles.tocIcon} />
         </div>
-      )}
-      {body.map((block, index) => {
-        if (block.style === "h1") {
-          return (
-            <h1
-              id={block.children[0].text}
-              className={`${headerClass ? headerClass : "primary"}`}
-              key={index}
-            >
-              {block.children[0].text}
-            </h1>
-          );
-        }
-        if (block.style === "h2") {
-          return (
-            <h2
-              id={block.children[0].text}
-              className={`${headerClass ? headerClass : "primary"}`}
-              key={index}
-            >
-              {block.children[0].text}
-            </h2>
-          );
-        }
-        if (block.style === "h3") {
-          return (
-            <h3
-              id={block.children[0].text}
-              className={`${headerClass ? headerClass : "primary"}`}
-              key={index}
-            >
-              {block.children[0].text}
-            </h3>
-          );
-        }
-        if (block.style === "h4") {
-          return (
-            <h4
-              id={block.children[0].text}
-              className={`${headerClass ? headerClass : "primary"}`}
-              key={index}
-            >
-              {block.children[0].text}
-            </h4>
-          );
-        }
-        if (block.style === "h5") {
-          return (
-            <h5
-              id={block.children[0].text}
-              className={`${headerClass ? headerClass : "primary"}`}
-              key={index}
-            >
-              {block.children[0].text}
-            </h5>
-          );
-        }
-        if (block.style === "h6") {
-          return (
-            <h6
-              id={block.children[0].text}
-              className={`${headerClass ? headerClass : "primary"}`}
-              key={index}
-            >
-              {block.children[0].text}
-            </h6>
-          );
-        }
-        //paragraph
-        if (block.style === "normal") {
-          return <p key={index}>{block.children[0].text}</p>;
-        }
-        //image
-        if (block._type === "image") {
-          return (
-            <Image
-              src={urlFor(block.asset).url()}
-              width={1280}
-              height={720}
-              alt={block._key}
-              className={styles.postImage}
-            />
-          );
-        }
-        //Image With Text
-        if (block._type === "imageWithText") {
-          if (block.orientation === "landscape") {
-            return (
-              <div className={styles.imageWithText}>
+      ) : null}
+      {renderedTOC}
+      {renderedBadge}
+      {body && body.length
+        ? body.map((block, index) => {
+            if (block.style === "h1") {
+              return (
+                <h1
+                  id={block.children[0].text}
+                  className={`${headerClass ? headerClass : "primary"}`}
+                  key={index}
+                >
+                  {block.children[0].text}
+                </h1>
+              );
+            }
+            if (block.style === "h2") {
+              return (
+                <h2
+                  id={block.children[0].text}
+                  className={`${headerClass ? headerClass : "primary"}`}
+                  key={index}
+                >
+                  {block.children[0].text}
+                </h2>
+              );
+            }
+            if (block.style === "h3") {
+              return (
+                <h3
+                  id={block.children[0].text}
+                  className={`${headerClass ? headerClass : "primary"}`}
+                  key={index}
+                >
+                  {block.children[0].text}
+                </h3>
+              );
+            }
+            if (block.style === "h4") {
+              return (
+                <h4
+                  id={block.children[0].text}
+                  className={`${headerClass ? headerClass : "primary"}`}
+                  key={index}
+                >
+                  {block.children[0].text}
+                </h4>
+              );
+            }
+            if (block.style === "h5") {
+              return (
+                <h5
+                  id={block.children[0].text}
+                  className={`${headerClass ? headerClass : "primary"}`}
+                  key={index}
+                >
+                  {block.children[0].text}
+                </h5>
+              );
+            }
+            if (block.style === "h6") {
+              return (
+                <h6
+                  id={block.children[0].text}
+                  className={`${headerClass ? headerClass : "primary"}`}
+                  key={index}
+                >
+                  {block.children[0].text}
+                </h6>
+              );
+            }
+            //paragraph
+            if (block.style === "normal") {
+              return <p key={index}>{block.children[0].text}</p>;
+            }
+            //image
+            if (block._type === "image") {
+              return (
                 <Image
-                  src={urlFor(block.image).url()}
+                  key={Math.random()}
+                  src={urlFor(block.asset).url()}
                   width={1280}
                   height={720}
-                  alt={block.alt}
-                  className={`${styles.image} ${styles.landscape}`}
+                  alt={block._key}
+                  className={styles.postImage}
                 />
-                <p className={`${styles.text} ${block.textColor}`}>
-                  {block.text}
-                </p>
-              </div>
-            );
-          }
-          if (block.orientation === "portrait") {
-            return (
-              <div className={styles.imageWithText}>
-                <Image
-                  src={urlFor(block.image).url()}
-                  width={1280}
-                  height={720}
-                  alt={block.alt}
-                  className={`${styles.image} ${styles.portrait}`}
-                />
-                <p className={`${styles.text} ${block.textColor}`}>
-                  {block.text}
-                </p>
-              </div>
-            );
-          }
-        }
+              );
+            }
+            //Image With Text
+            if (block._type === "imageWithText") {
+              if (block.orientation === "landscape") {
+                return (
+                  <div key={Math.random()} className={styles.imageWithText}>
+                    <Image
+                      src={urlFor(block.image).url()}
+                      width={1280}
+                      height={720}
+                      alt={block.alt}
+                      className={`${styles.image} ${styles.landscape}`}
+                    />
+                    <p className={`${styles.text} ${block.textColor}`}>
+                      {block.text}
+                    </p>
+                  </div>
+                );
+              }
+              if (block.orientation === "portrait") {
+                return (
+                  <div key={Math.random()} className={styles.imageWithText}>
+                    <Image
+                      src={urlFor(block.image).url()}
+                      width={1280}
+                      height={720}
+                      alt={block.alt}
+                      className={`${styles.image} ${styles.portrait}`}
+                    />
+                    <p className={`${styles.text} ${block.textColor}`}>
+                      {block.text}
+                    </p>
+                  </div>
+                );
+              }
+            }
 
-        //Specification Text
-        if (block._type === "specificationText") {
-          return (
-            <div className={`${styles.specificationText}`}>
-              <h3 className={`${block.color} ${block.headerClass}`}>
-                {block.specification}:
-              </h3>
-              <p className={`${styles.text}`} key={index}>
-                {block.text}
-              </p>
-            </div>
-          );
-        }
-      })}
+            //Specification Text
+            if (block._type === "specificationText") {
+              return (
+                <div
+                  key={Math.random()}
+                  className={`${styles.specificationText}`}
+                >
+                  <h3 className={`${block.color} ${block.headerClass}`}>
+                    {block.specification}:
+                  </h3>
+                  <p className={`${styles.text}`} key={index}>
+                    {block.text}
+                  </p>
+                </div>
+              );
+            }
+          })
+        : null}
     </div>
   );
 };

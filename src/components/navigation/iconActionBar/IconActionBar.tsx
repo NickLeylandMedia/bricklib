@@ -3,7 +3,7 @@
 import React from "react";
 
 /* Stylesheet Imports */
-import styles from "./LongBio.module.scss";
+import styles from "./IconActionBar.module.scss";
 
 /* Image Imports */
 
@@ -15,7 +15,7 @@ import styles from "./LongBio.module.scss";
 interface Props {}
 
 /* Component */
-const LongBio: React.FC<Props> = () => {
+const IconActionBar: React.FC<Props> = () => {
   /* State Variables */
   /* End State Variables */
 
@@ -29,8 +29,8 @@ const LongBio: React.FC<Props> = () => {
   /* End Effects */
 
   /* Component Return Statement */
-  return <div className={styles.LongBio}></div>;
+  return <div className={styles.IconActionBar}></div>;
 };
 
 /* Export Statement */
-export default LongBio;
+export default IconActionBar;

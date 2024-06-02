@@ -3,7 +3,7 @@
 import React from "react";
 
 /* Stylesheet Imports */
-import styles from "./PagedCards.module.scss";
+import styles from "./GlowIconBar.module.scss";
 
 /* Image Imports */
 
@@ -13,23 +13,20 @@ import styles from "./PagedCards.module.scss";
 
 /* Component Interfaces */
 interface Props {
-  header: string;
-  textColor: "light" | "dark";
-  headerClass: "primary" | "secondary";
-  cards: any[];
+  icons: any[];
+  width?: "standard" | "nearFull";
 }
 
 /* Component */
-const PagedCards: React.FC<Props> = ({
-  textColor,
-  headerClass,
-  header,
-  cards,
-}) => {
+const GlowIconBar: React.FC<Props> = ({ icons, width }) => {
   /* State Variables */
   /* End State Variables */
 
   /* Render Variables */
+  const widthRef = {
+    standard: "standardContainer",
+    nearFull: "wideContainer",
+  };
   /* End Render Variables */
 
   /* Functions */
@@ -40,14 +37,13 @@ const PagedCards: React.FC<Props> = ({
 
   /* Component Return Statement */
   return (
-    <div className={styles.PagedCards}>
-      <h2 className={`${textColor} ${headerClass}`}>
-        {header ? header : "Header"}
-      </h2>
-      <div className={styles.cardContainer}></div>
-    </div>
+    <div
+      className={`${styles.GlowIconBar} ${
+        width ? widthRef[width] : "standardContainer"
+      }`}
+    ></div>
   );
 };
 
 /* Export Statement */
-export default PagedCards;
+export default GlowIconBar;

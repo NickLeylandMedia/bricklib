@@ -22,6 +22,7 @@ interface Props {
   imageBorderColor: string;
   bioText: string;
   textColor: "light" | "dark";
+  showHeader?: true;
 }
 
 /* Component */
@@ -34,6 +35,7 @@ const ShortIntro: React.FC<Props> = ({
   imgHeight,
   imgWidth,
   textColor,
+  showHeader,
 }) => {
   /* State Variables */
   /* End State Variables */
@@ -50,9 +52,11 @@ const ShortIntro: React.FC<Props> = ({
   /* Component Return Statement */
   return (
     <div className={styles.ShortIntro}>
-      <h3 className={`primary ${textColor} center`}>
-        {header ? header : "Header"}
-      </h3>
+      {showHeader ? (
+        <h3 className={`primary ${textColor} center`}>
+          {header ? header : "Header"}
+        </h3>
+      ) : null}
       <Image
         src={
           image

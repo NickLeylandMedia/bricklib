@@ -109,11 +109,16 @@
   position: absolute;
   text-align: center;
   text-shadow: 2px 2px 3px black;
-  top: 40%;
+  top: 20%;
   left: 15%;
   z-index: 0;
 
+  @include md {
+    left: 13%;
+  }
+
   @include lg {
+    top: 40%;
     width: 50%;
     left: 25%;
   }
@@ -128,7 +133,7 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: 20px;
+  bottom: 50px;
   left: 32.5%;
 
   @include md {
@@ -139,6 +144,7 @@
   @include lg {
     width: 15%;
     left: 42.5%;
+    bottom: 20px;
   }
 
   // @include xl {
@@ -149,4 +155,50 @@
 .arrowIcon {
   height: 30px;
   width: 30px;
+}
+
+.menuIcon {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  color: white;
+  top: 20px;
+  right: 20px;
+  z-index: 20;
+  cursor: pointer;
+  transition: all 500ms ease-in-out;
+
+  @media (hover: hover) {
+    &:hover {
+      color: red;
+    }
+  }
+
+  @include lg {
+    display: none;
+  }
+}
+
+.logoBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.iconBox {
+  margin: 0 20px;
+  background-color: rgba(black, 0.6);
+  border: 2px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 50%;
+}
+
+.logoIcon {
+  height: 60px;
+  width: 60px;
+  color: white;
 }

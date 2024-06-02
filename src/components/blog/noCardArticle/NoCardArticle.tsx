@@ -26,8 +26,8 @@ interface Props {
   imgWidth: number;
   linkComponent?: React.ReactNode;
   date?: string;
-  cats?: string[];
-  tags?: string[];
+  cats?: any[];
+  tags?: any[];
 }
 
 /* Component */
@@ -46,25 +46,52 @@ const NoCardArticle: React.FC<Props> = ({
   tags,
 }) => {
   /* State Variables */
-  const [catTags, setCatTags] = useState<string[]>([]);
+  const [catsFinal, setCatsFinal] = useState<any[]>([]);
+  const [tagsFinal, setTagsFinal] = useState<any[]>([]);
   /* End State Variables */
 
   /* Render Variables */
   const renderedDate = date ? new Date(date).toLocaleDateString() : "Unknown";
+  let renderedCats: any;
+  let renderedTags: any;
   /* End Render Variables */
+
+  /* Render Logic */
+  if (catsFinal && catsFinal.length > 0) {
+    renderedCats = catsFinal.map((cat, index) => (
+      <SimplePill
+        key={index}
+        text={cat}
+        textColor={textColor}
+        buttonColor="mvs-blue"
+        type="link"
+        link={`/blog/categories/${cat.toLowerCase()}`}
+      />
+    ));
+  }
+  if (tagsFinal && tagsFinal.length > 0) {
+    renderedTags = tagsFinal.map((tag, index) => (
+      <SimplePill
+        key={index}
+        text={tag}
+        textColor={textColor}
+        buttonColor="mvs-red"
+        type="link"
+        link={`/blog/tags/${tag.toLowerCase()}`}
+      />
+    ));
+  }
+  /* End Render Logic */
 
   /* Functions */
   /* End Functions */
 
   /* Effects */
   useEffect(() => {
-    if (cats) {
-      setCatTags((prev) => [...prev, ...cats]);
-    }
-    if (tags) {
-      setCatTags((prev) => [...prev, ...tags]);
-    }
-    console.log({ catTags: catTags });
+    const textCats = cats?.map((cat) => cat.name) || [];
+    const textTags = tags?.map((tag) => tag.name) || [];
+    setCatsFinal(textCats);
+    setTagsFinal(textTags);
   }, [cats, tags]);
   /* End Effects */
 
@@ -87,13 +114,17 @@ const NoCardArticle: React.FC<Props> = ({
             <Arrow direction="right" type="link" link={link} color="mvs-red" />
           )}
         </div>
-        <div className={styles.catTagBox}></div>
+
         <p className={`${textColor}`}>Published On: {renderedDate}</p>
         <p className={`${textColor}`}>
           {summary
             ? summary
             : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu feugiat pretium nibh ipsum consequat nisl vel pretium. Sed viverra tellus in hac habitasse platea dictumst. Nec nam aliquam sem et tortor consequat id porta. Vitae sapien pellentesque habitant morbi tristique senectus. Vulputate dignissim suspendisse in est ante. Consectetur adipiscing elit ut aliquam purus. Neque vitae tempus quam pellentesque nec nam. Auctor urna nunc id cursus. Elementum curabitur vitae nunc sed velit dignissim sodales ut eu. Arcu cursus vitae congue mauris rhoncus aenean vel. Molestie ac feugiat sed lectus. Aenean euismod elementum nisi quis eleifend quam. Placerat in egestas erat imperdiet sed. Tempor orci eu lobortis elementum. Aliquam ut porttitor leo a diam sollicitudin. Vestibulum morbi blandit cursus risus at ultrices. Libero enim sed faucibus turpis in. Varius duis at consectetur lorem donec massa sapien. Amet consectetur adipiscing elit duis tristique sollicitudin nibh sit."}
         </p>
+        <div className={styles.catTagBox}>
+          {renderedCats}
+          {renderedTags}
+        </div>
       </div>
     </div>
   );

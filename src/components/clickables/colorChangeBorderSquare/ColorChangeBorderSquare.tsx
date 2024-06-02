@@ -18,7 +18,7 @@ interface Props {
   buttonColor: string;
   link?: string;
   text: string;
-  action?: () => void;
+  action?: any;
 }
 
 /* Component */
@@ -58,7 +58,8 @@ const ColorChangeBorderSquare: React.FC<Props> = ({
   if (type === "button") {
     return (
       <button
-        onClick={() => {
+        onClick={(e) => {
+          e.preventDefault();
           {
             action ? action() : null;
           }

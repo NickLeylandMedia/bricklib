@@ -25,6 +25,7 @@ interface Props {
   link?: string;
   width?: "standard" | "nearFull";
   initialActive?: string;
+  linkText?: string;
 }
 
 /* Component */
@@ -39,6 +40,7 @@ const SorterGallery: React.FC<Props> = ({
   link,
   width,
   initialActive,
+  linkText,
 }) => {
   /* State Variables */
   /* End State Variables */
@@ -65,7 +67,6 @@ const SorterGallery: React.FC<Props> = ({
     >
       <div className={`markonus`}></div>
       <h2 className={`primary ${textColor}`}>{header ? header : "Header"}</h2>
-      {/* <select className={styles.mediaDropdown} name="" id=""></select> */}
       <div className={styles.fullSizeSorter}>
         <ActionBar
           items={sorterOptions}
@@ -80,6 +81,8 @@ const SorterGallery: React.FC<Props> = ({
           maxColumns={maxColumns}
           showLink={showLink}
           link={link}
+          linkText={linkText}
+          spacing="5px"
         />
       </div>
     </div>

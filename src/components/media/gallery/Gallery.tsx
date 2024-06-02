@@ -10,9 +10,9 @@ import styles from "./Gallery.module.scss";
 /* Component Imports */
 import ColorChangeBorderSquare from "../../../components/clickables/colorChangeBorderSquare/ColorChangeBorderSquare";
 import Image from "next/image";
+import Link from "next/link";
 
 /* Module Imports */
-import { motion } from "framer-motion";
 
 /* Component Interfaces */
 interface Props {
@@ -29,6 +29,7 @@ interface Props {
   aspectRatio?: "16 / 9" | "4/3" | "1/1";
   width?: "standard" | "nearFull";
   imgBorder?: "white" | "darkGray" | "black";
+  itemLinks?: true;
 }
 
 /* Component */
@@ -46,6 +47,7 @@ const Gallery: React.FC<Props> = ({
   linkText,
   link,
   showLink,
+  itemLinks,
 }) => {
   /* State Variables */
   /* End State Variables */
@@ -78,11 +80,11 @@ const Gallery: React.FC<Props> = ({
   /* Render Logic */
   if (items && items.length > 0) {
     renderedItems = items.map((item) => {
-      return (
-        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}>
+      if (!itemLinks) {
+        return (
           <Image
             src={item.url || item.image || item.photo}
-            alt={item.alt}
+            alt={item.alt || item.imageAlt || item.photoAlt}
             className={styles.galleryItem}
             style={{
               aspectRatio: `${aspectRatio ? aspectRatio : "1/1"}`,
@@ -90,9 +92,27 @@ const Gallery: React.FC<Props> = ({
             }}
             height={720}
             width={1280}
+            key={item.name}
           />
-        </motion.div>
-      );
+        );
+      }
+      if (itemLinks && item.slug) {
+        return (
+          <Link href={item.slug ? item.slug : "/gallery"} key={item.name}>
+            <Image
+              src={item.url || item.image || item.photo}
+              alt={item.alt || item.imageAlt || item.photoAlt}
+              className={styles.galleryItem}
+              style={{
+                aspectRatio: `${aspectRatio ? aspectRatio : "1/1"}`,
+                border: `${imgBorder ? imgBorderRef[imgBorder] : null}`,
+              }}
+              height={720}
+              width={1280}
+            />
+          </Link>
+        );
+      }
     });
   }
 
@@ -133,7 +153,7 @@ const Gallery: React.FC<Props> = ({
               type="link"
               buttonColor="mvs-red"
               link={link ? link : "/gallery"}
-              text={linkText ? linkText : "See All Images"}
+              text={linkText ? linkText : "See All Media"}
             />
           )}
         </div>

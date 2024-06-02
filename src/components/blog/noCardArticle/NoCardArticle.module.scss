@@ -3,6 +3,17 @@
   margin: 0 auto;
 }
 
+.catTagBox {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 5px;
+
+  a {
+    font-size: 0.75em;
+  }
+}
+
 .noCardImage {
   width: 100%;
   height: auto;

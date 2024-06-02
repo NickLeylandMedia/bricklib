@@ -1,0 +1,22 @@
+@import "../../../styles/variables.scss";
+
+.GlowIcon {
+  cursor: pointer;
+  transition: all 500ms ease-in-out;
+}
+
+.red {
+  @media (hover: hover) {
+    &:hover {
+      filter: drop-shadow(0px 0px 25px red);
+    }
+  }
+}
+
+.mvs-red {
+  @media (hover: hover) {
+    &:hover {
+      filter: drop-shadow(0px 0px 25px $mvs-red);
+    }
+  }
+}

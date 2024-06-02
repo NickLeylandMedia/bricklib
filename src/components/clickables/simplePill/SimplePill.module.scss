@@ -1,21 +1,24 @@
 @import "../../../styles/modules/clickables";
 @import "../../../styles/variables.scss";
 
-.basicSquare {
-  @include pill(red);
-}
-
 //Colors
 .blue {
   @include pill(blue);
 }
 
+.veryDarkBlue {
+  @include pill($veryDarkBlue);
+}
 .green {
   @include pill(green);
 }
 
 .red {
   @include pill(red);
+}
+
+.veryDarkRed {
+  @include pill($veryDarkRed);
 }
 
 .yellow {

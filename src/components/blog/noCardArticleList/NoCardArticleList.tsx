@@ -31,6 +31,7 @@ interface Props {
   width?: "standard" | "nearFull";
   link?: string;
   showHeader?: boolean;
+  linkText?: string;
 }
 
 /* Component */
@@ -40,6 +41,7 @@ const NoCardArticleList: React.FC<Props> = ({
   textColor,
   paginated,
   showLink,
+  linkText,
   linkComponent,
   pageForwardComponent,
   pageBackComponent,
@@ -79,10 +81,12 @@ const NoCardArticleList: React.FC<Props> = ({
           textColor={textColor}
           key={index}
           img={item.img || item.image || item.mainImage}
-          date={item.date || item.publishedAt || item.createdAt}
+          date={
+            item.date || item.publishedAt || item.createdAt || item.releaseDate
+          }
           link={item.link || item.slug}
           alt={item.alt || item.imageAlt || item.mainImageAlt}
-          title={item.title}
+          title={item.title || item.name}
           cats={item.cats || item.categories}
           tags={item.tags || item.keywords}
           summary={
@@ -161,7 +165,7 @@ const NoCardArticleList: React.FC<Props> = ({
               <ColorChangeBorderSquare
                 buttonColor="mvs-red"
                 type="link"
-                text="All Posts"
+                text={linkText ? linkText : "All Posts"}
                 link={link ? link : "/blog"}
               />
             )
@@ -191,7 +195,7 @@ const NoCardArticleList: React.FC<Props> = ({
               <ColorChangeBorderSquare
                 buttonColor="mvs-red"
                 type="link"
-                text="All Posts"
+                text={linkText ? linkText : "All Posts"}
                 link={link ? link : "/blog"}
               />
             )

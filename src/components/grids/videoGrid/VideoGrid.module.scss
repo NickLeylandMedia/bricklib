@@ -1,0 +1,15 @@
+@import "../../../styles/responsive.scss";
+
+.gridContainer {
+  width: 100%;
+  grid-auto-rows: 1fr;
+}
+
+.linkContainer {
+  width: 50%;
+  margin: 20px auto;
+
+  @include lg {
+    width: 30%;
+  }
+}

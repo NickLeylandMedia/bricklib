@@ -1,0 +1,53 @@
+@import "../../../styles/responsive.scss";
+
+.LinkShowcase {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../../../../public/boulder.jpg);
+  background-size: fit;
+  background-position: center;
+}
+
+.overlayBox {
+  position: absolute;
+  min-height: 90%;
+  width: 80%;
+  top: 2.5%;
+  left: 5%;
+  background-color: rgba($color: black, $alpha: 0.8);
+  padding: 15px;
+  border-radius: 25px;
+
+  @include lg {
+    left: 10%;
+  }
+}
+
+.photo {
+  display: block;
+  margin: 20px auto;
+  border-radius: 50%;
+  box-shadow: red 0px 0px 25px 7px;
+}
+
+.linkBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px auto;
+  width: 65%;
+
+  a {
+    margin: 10px auto;
+    width: 100%;
+
+    @include lg {
+      width: 48%;
+    }
+  }
+
+  @include lg {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

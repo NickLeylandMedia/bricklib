@@ -79,7 +79,7 @@ const BlogPost: React.FC<Props> = ({
       />
       <div className="light standardContainer">
         {/* <PortableText value={body} /> */}
-        <TextRenderer body={body} textColor={"light"} />
+        <TextRenderer body={body} textColor={"light"} TOCenabled />
       </div>
     </div>
   );

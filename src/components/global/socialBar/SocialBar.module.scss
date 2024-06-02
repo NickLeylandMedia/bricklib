@@ -1,0 +1,21 @@
+@import "../../../styles/responsive.scss";
+
+.SocialBar {
+  width: 60%;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  a {
+    margin: 0 auto;
+  }
+
+  @include lg {
+    width: 40%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  @include xl {
+    width: 25%;
+  }
+}
